@@ -38,19 +38,11 @@ namespace AddressGenerator
 
             return new IPAddress(bytes).ToString();
         }
-
-        private string GetSubnetMask()
-        {
-
-            uint subnetMask = 0xFFFFFFFF << (32 - _bitssubnet);
-            subnetMask = (uint)IPAddress.HostToNetworkOrder((int)subnetMask);
-            return new IPAddress(subnetMask).ToString();
-        }
-
         public string generateSubnet()
         {
-            string subnetMask = GetSubnetMask();
-            return subnetMask;
+            uint subnetMask = 0xFFFFFFFF << (32 - _bitssubnet);
+            subnetMask = (uint)IPAddress.HostToNetworkOrder((int)subnetMask);
+            return  new IPAddress(subnetMask).ToString();
         }
 
 
